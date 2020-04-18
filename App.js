@@ -1,30 +1,39 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import styles from './styles';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>I wonder how quickly this new text will appear</Text>
-      <EyeInfo side="left"/>
+      <EyeInfo side='left'/>
     </View>
   );
 }
 
 function EyeInfo(props) {
-  let side = props.side.charAt(0).toUpperCase() +
-    props.side.slice(1);
   return (
-    <View>
-      <Text>{side}</Text>
+    <View style={styles.eyeInfo}>
+      <Text style={styles.eyeHeading}>{capital(props.side)}</Text>
+      <View style={styles.horizontalDivider}/>
+
+      <Date type='start' />
+      <Date type='end' />
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function Date(props) {
+  return (
+    <View style={styles.date}>
+      <Text style={styles.subheading}>{capital(props.type)}</Text>
+      <View style={styles.dateBackground}>
+        <Text style={styles.dateText}>04/20</Text>
+      </View>
+    </View>
+  );
+}
+
+function capital(word) {
+  return word.charAt(0).toUpperCase() +
+    word.slice(1);
+}
