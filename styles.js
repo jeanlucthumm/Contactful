@@ -16,32 +16,62 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  content: {
+    paddingTop: '50%',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   eyeInfo: {
     display: 'flex',
     alignItems: 'center',
-    flexDirection: 'column',
   },
   eyeHeading: {
     color: colors.foreground,
-    fontSize: 30,
+    fontSize: 25,
+    paddingTop: 0,
+    marginTop: 0,
   },
   horizontalDivider: {
     marginTop: 6.5,
     backgroundColor: colors.foreground,
-    width: 86,
+    width: '100%',
     height: 1,
+  },
+  verticalDivider: {
+    marginLeft: 40,
+    marginRight: 40,
+    backgroundColor: colors.foreground,
+    width: 1,
+    height: '100%',
   },
 
   dateBackground: {
-    padding: 4,
+    marginTop: 6,
+    marginBottom: 20,
+
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingLeft: 15,
+    paddingRight: 15,
+
     backgroundColor: colors.accent,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+
+    elevation: 9,
   },
   dateText: {
     color: colors.foreground,
-    fontSize: 23,
+    fontSize: 30,
   },
   subheading: {
-    marginTop: 12,
-    color: colors.secondary
+    color: colors.secondary,
+    fontSize: 11,
   }
 })

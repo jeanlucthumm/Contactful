@@ -5,7 +5,11 @@ import styles from './styles';
 export default function App() {
   return (
     <View style={styles.container}>
-      <EyeInfo side='left'/>
+      <View style={styles.content}>
+        <EyeInfo side='left'/>
+        <View style={styles.verticalDivider}/>
+        <EyeInfo side='right'/>
+      </View>
     </View>
   );
 }
@@ -16,8 +20,10 @@ function EyeInfo(props) {
       <Text style={styles.eyeHeading}>{capital(props.side)}</Text>
       <View style={styles.horizontalDivider}/>
 
-      <Date type='start' />
-      <Date type='end' />
+      <View style={{marginTop: 20}}>
+        <Date type='start'/>
+        <Date type='end'/>
+      </View>
     </View>
   );
 }
