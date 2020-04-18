@@ -15,12 +15,18 @@ export default StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: '30%',
+  },
+  title: {
+    marginBottom: 51.5,
+    width: '100%',
+    fontFamily: 'cursive',
+    fontSize: 40,
+    color: colors.foreground,
+    textAlign: 'center',
   },
   content: {
-    paddingTop: '50%',
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
   },
   eyeInfo: {
     display: 'flex',

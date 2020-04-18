@@ -1,10 +1,29 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View} from 'react-native';
+import * as Font from 'expo-font';
 import styles from './styles';
+import {AppLoading} from "expo";
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    cursive: require('./assets/fonts/cursive.ttf')
+  })
+}
 
 export default function App() {
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setDataLoaded(true)}/>
+    )
+  }
+
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Contactful</Text>
       <View style={styles.content}>
         <EyeInfo side='left'/>
         <View style={styles.verticalDivider}/>
