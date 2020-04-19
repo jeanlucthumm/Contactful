@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableHighlight} from 'react-native';
 import * as Font from 'expo-font';
-import styles from './styles';
+import styles, {colors} from './styles';
 import {AppLoading} from "expo";
+
+import Reset from './assets/svg/reset.svg';
+import Skip from './assets/svg/skip.svg';
+import Eye from './assets/svg/london-eye.svg';
+import Settings from './assets/svg/settings.svg';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -23,6 +28,19 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Settings
+        style={styles.settingsSvg}
+        fill={colors.foreground}
+        stroke={colors.foreground}
+        width='35'
+        height='35'
+        strokeWidth='0.2'
+      />
+      <Eye
+        style={styles.eyeSvg}
+        width='50'
+        height='50'
+      />
       <Text style={styles.title}>Contactful</Text>
       <View style={styles.content}>
         <EyeInfo side='left'/>
@@ -42,6 +60,29 @@ function EyeInfo(props) {
       <View style={{marginTop: 20}}>
         <Date type='start'/>
         <Date type='end'/>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableHighlight style={styles.button}>
+          <Reset
+            style={styles.resetSvg}
+            fill='black'
+            stroke='black'
+            width='35'
+            height='35'
+            strokeWidth='0.2'
+          />
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
+          <Skip
+            style={styles.skipSvg}
+            fill='black'
+            stroke='black'
+            width='35'
+            height='35'
+            strokeWidth='0.2'
+          />
+        </TouchableHighlight>
       </View>
     </View>
   );

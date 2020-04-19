@@ -1,7 +1,7 @@
 import {StyleSheet} from "react-native";
 
 // Color scheme
-const colors = {
+export const colors = {
   background: '#3D5467',
   foreground: '#F1EDEE',
   secondary: '#8AA29E',
@@ -15,10 +15,18 @@ export default StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '30%',
+    paddingBottom: '10%',
+  },
+  settingsSvg: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+  },
+  eyeSvg: {
+    marginBottom: 20,
   },
   title: {
-    marginBottom: 51.5,
+    marginBottom: 40,
     width: '100%',
     fontFamily: 'cursive',
     fontSize: 40,
@@ -79,5 +87,26 @@ export default StyleSheet.create({
   subheading: {
     color: colors.secondary,
     fontSize: 11,
-  }
+  },
+
+  buttonContainer: {
+    // flexDirection: 'row',
+  },
+  button: {
+    backgroundColor: colors.secondary,
+    width: 50,
+    height: 50,
+    borderRadius: 50/2,
+    margin: 18,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  resetSvg: {
+    width: '100%',
+    height: '100%',
+  },
+  skipSvg: {
+    marginBottom: 8,
+  },
 })
