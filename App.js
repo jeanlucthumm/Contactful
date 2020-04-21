@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Text, View, TouchableHighlight} from 'react-native';
+import {Text, TouchableHighlight, View} from 'react-native';
 import * as Font from 'expo-font';
 import styles, {colors} from './styles';
-import {AppLoading} from "expo";
+import {AppLoading} from 'expo';
+import {Overlay} from 'react-native-elements';
 
 import Reset from './assets/svg/reset.svg';
 import Skip from './assets/svg/skip.svg';
@@ -17,6 +18,7 @@ const fetchFonts = () => {
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(false);
 
   if (!dataLoaded) {
     return (
@@ -28,6 +30,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Overlay isVisible={overlayVisible}
+               onBackdropPress={() => {
+                 setOverlayVisible(false)
+               }}>
+        <ConfirmReset/>
+      </Overlay>
       <Settings
         style={styles.settingsSvg}
         fill={colors.foreground}
@@ -43,9 +51,21 @@ export default function App() {
       />
       <Text style={styles.title}>Contactful</Text>
       <View style={styles.content}>
-        <EyeInfo side='left'/>
+        <EyeInfo side='left'
+                 onResetPress={() => {
+                   setOverlayVisible(true)
+                 }}
+                 onSkipPress={() => {
+                   setOverlayVisible(true)
+                 }}/>
         <View style={styles.verticalDivider}/>
-        <EyeInfo side='right'/>
+        <EyeInfo side='right'
+                 onResetPress={() => {
+                   setOverlayVisible(true)
+                 }}
+                 onSkipPress={() => {
+                   setOverlayVisible(true)
+                 }}/>
       </View>
     </View>
   );
@@ -63,7 +83,8 @@ function EyeInfo(props) {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button}
+                            onPress={props.onResetPress}>
           <Reset
             style={styles.resetSvg}
             fill='black'
@@ -73,7 +94,8 @@ function EyeInfo(props) {
             strokeWidth='0.2'
           />
         </TouchableHighlight>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button}
+                            onPress={props.onSkipPress}>
           <Skip
             style={styles.skipSvg}
             fill='black'
@@ -97,6 +119,12 @@ function Date(props) {
       </View>
     </View>
   );
+}
+
+function ConfirmReset(props) {
+  return (
+    <Text>Confirming Reset</Text>
+  )
 }
 
 function capital(word) {
