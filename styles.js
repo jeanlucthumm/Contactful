@@ -17,6 +17,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: '10%',
   },
+  overlay: {
+    backgroundColor: colors.background,
+    width: '80%',
+    height: '30%',
+  },
   settingsSvg: {
     position: 'absolute',
     top: 40,
@@ -108,5 +113,31 @@ export default StyleSheet.create({
   },
   skipSvg: {
     marginBottom: 8,
+  },
+})
+
+export const overlayStyles = StyleSheet.create({
+  container: {
+  },
+  text: {
+    color: colors.foreground,
+  },
+  button: {
+    backgroundColor: colors.accent,
+  },
+  cancelButton: {
+    backgroundColor: colors.highlight,
+  },
+  buttonContainer: {
+    marginLeft: 5,
+    marginRight: 5,
+    width: 100,
+  },
+  buttonTopContainer: {
+    display: 'flex',
+    width: '100%',
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 })

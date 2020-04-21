@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import styles, {colors} from './styles';
 import {AppLoading} from 'expo';
 import {Overlay} from 'react-native-elements';
+import ConfirmOverlay, {ActionType} from "./Overlay";
 
 import Reset from './assets/svg/reset.svg';
 import Skip from './assets/svg/skip.svg';
@@ -19,6 +20,7 @@ const fetchFonts = () => {
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [overlayVisible, setOverlayVisible] = useState(false);
+  const [overlayType, setOverlayType] = useState(ActionType.RESET);
 
   if (!dataLoaded) {
     return (
@@ -31,10 +33,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Overlay isVisible={overlayVisible}
+               overlayStyle={styles.overlay}
                onBackdropPress={() => {
                  setOverlayVisible(false)
                }}>
-        <ConfirmReset/>
+        <ConfirmOverlay actionType={overlayType}
+                        onCancel={() => setOverlayVisible(false)}/>
       </Overlay>
       <Settings
         style={styles.settingsSvg}
@@ -53,17 +57,21 @@ export default function App() {
       <View style={styles.content}>
         <EyeInfo side='left'
                  onResetPress={() => {
+                   setOverlayType(ActionType.RESET)
                    setOverlayVisible(true)
                  }}
                  onSkipPress={() => {
+                   setOverlayType(ActionType.SKIP)
                    setOverlayVisible(true)
                  }}/>
         <View style={styles.verticalDivider}/>
         <EyeInfo side='right'
                  onResetPress={() => {
+                   setOverlayType(ActionType.RESET)
                    setOverlayVisible(true)
                  }}
                  onSkipPress={() => {
+                   setOverlayType(ActionType.SKIP)
                    setOverlayVisible(true)
                  }}/>
       </View>
@@ -119,12 +127,6 @@ function Date(props) {
       </View>
     </View>
   );
-}
-
-function ConfirmReset(props) {
-  return (
-    <Text>Confirming Reset</Text>
-  )
 }
 
 function capital(word) {
